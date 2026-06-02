@@ -1,0 +1,20 @@
+---
+interface Props {
+  title: string;
+  updated?: string;
+}
+
+const { title, updated } = Astro.props;
+---
+
+<section class="container legal">
+  <a class="eyebrow" href="/"><span class="dot"></span>Rivalo</a>
+  <h1>{title}</h1>
+  {updated && <p>Last updated: {updated}</p>}
+  <slot />
+</section>
+
+<style>
+  .eyebrow { margin-bottom: 1.4rem; }
+  h1 { margin-top: 0; }
+</style>

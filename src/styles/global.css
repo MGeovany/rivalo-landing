@@ -1,0 +1,126 @@
+:root {
+  color-scheme: dark;
+  --bg: #080906;
+  --bg-2: #10130b;
+  --text: #f6f7ed;
+  --muted: rgba(246, 247, 237, 0.66);
+  --subtle: rgba(246, 247, 237, 0.44);
+  --line: rgba(246, 247, 237, 0.13);
+  --panel: rgba(246, 247, 237, 0.06);
+  --panel-strong: rgba(246, 247, 237, 0.1);
+  --lime: #d8ff38;
+  --orange: #ff8a3d;
+  --radius: 26px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(216, 255, 56, 0.18), transparent 30rem),
+    radial-gradient(circle at 86% 4%, rgba(255, 138, 61, 0.14), transparent 28rem),
+    linear-gradient(180deg, var(--bg-2), var(--bg) 42%, #030402);
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(1120px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.dot {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 999px;
+  background: var(--lime);
+  box-shadow: 0 0 22px rgba(216, 255, 56, 0.75);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border-radius: 999px;
+  padding: 0 1rem;
+  font-weight: 800;
+  border: 1px solid var(--line);
+}
+
+.button.primary {
+  background: var(--lime);
+  color: #101207;
+  border-color: transparent;
+}
+
+.button.secondary {
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--text);
+}
+
+.panel {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: var(--radius);
+}
+
+.section {
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+
+.legal {
+  max-width: 820px;
+  padding: clamp(3rem, 8vw, 5rem) 0 6rem;
+}
+
+.legal h1,
+.headline {
+  margin: 0;
+  font-size: clamp(3.4rem, 9vw, 6.8rem);
+  line-height: 0.88;
+  letter-spacing: -0.085em;
+}
+
+.legal h1 { font-size: clamp(2.8rem, 7vw, 5.4rem); }
+
+.legal h2 {
+  margin: 2.4rem 0 0.75rem;
+  font-size: 1.35rem;
+}
+
+.lead,
+.legal p,
+.legal li {
+  color: var(--muted);
+  line-height: 1.68;
+}
+
+.lead {
+  max-width: 670px;
+  font-size: clamp(1.12rem, 2vw, 1.34rem);
+}
+
+@media (max-width: 760px) {
+  .container { width: min(100% - 24px, 1120px); }
+}

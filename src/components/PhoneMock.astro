@@ -1,0 +1,112 @@
+<aside class="device" aria-label="Rivalo app preview">
+  <div class="screen">
+    <div class="eyebrow"><span class="dot"></span>Live match - 42:16</div>
+    <div class="scoreline">
+      <span>11v11</span>
+      <strong>Training</strong>
+    </div>
+    <div class="metrics">
+      <div><strong>6.8</strong><span>km</span></div>
+      <div><strong>22</strong><span>sprints</span></div>
+      <div><strong>156</strong><span>avg bpm</span></div>
+      <div><strong>84</strong><span>rating</span></div>
+    </div>
+    <div class="pitch">
+      <span class="route route-a"></span>
+      <span class="route route-b"></span>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .device {
+    min-height: 560px;
+    border: 1px solid var(--line);
+    border-radius: 42px;
+    padding: 1rem;
+    background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.035));
+    box-shadow: 0 34px 120px rgba(0, 0, 0, 0.42), inset 0 1px rgba(255,255,255,.16);
+  }
+
+  .screen {
+    height: 100%;
+    border-radius: 30px;
+    padding: 1.25rem;
+    background: #0d1009;
+    overflow: hidden;
+  }
+
+  .scoreline {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 1.3rem 0 1rem;
+    color: var(--muted);
+  }
+
+  .scoreline strong { color: var(--text); }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .metrics div {
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 1rem;
+    background: rgba(255,255,255,.055);
+  }
+
+  .metrics strong {
+    display: block;
+    font-size: 2rem;
+    line-height: 1;
+    letter-spacing: -0.07em;
+  }
+
+  .metrics span {
+    display: block;
+    margin-top: 0.55rem;
+    color: var(--subtle);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+  }
+
+  .pitch {
+    position: relative;
+    height: 190px;
+    margin-top: 1rem;
+    border: 1px solid rgba(216, 255, 56, 0.24);
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(216,255,56,.18), rgba(255,138,61,.1));
+    overflow: hidden;
+  }
+
+  .pitch::before {
+    content: "";
+    position: absolute;
+    inset: 2rem 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.23);
+    border-radius: 18px;
+  }
+
+  .route {
+    position: absolute;
+    width: 44%;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--lime);
+    opacity: .85;
+    transform-origin: left center;
+  }
+
+  .route-a { left: 21%; top: 44%; transform: rotate(18deg); }
+  .route-b { left: 42%; top: 58%; transform: rotate(-24deg); background: var(--orange); }
+
+  @media (max-width: 840px) {
+    .device { min-height: 480px; }
+  }
+</style>

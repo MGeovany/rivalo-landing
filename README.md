@@ -1,6 +1,6 @@
 # Rivalo Landing
 
-Minimal FastHTML marketing and policy site for Rivalo.
+Minimal Astro marketing and policy site for Rivalo.
 
 ## Routes
 
@@ -12,8 +12,12 @@ Minimal FastHTML marketing and policy site for Rivalo.
 ## Local Dev
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn api.index:app --reload
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
 ```

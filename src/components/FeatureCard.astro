@@ -1,0 +1,46 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  text: string;
+}
+
+const { number, title, text } = Astro.props;
+---
+
+<article class="feature panel">
+  <span>{number}</span>
+  <h3>{title}</h3>
+  <p>{text}</p>
+</article>
+
+<style>
+  .feature {
+    padding: 1.2rem;
+    min-height: 176px;
+  }
+
+  span {
+    display: inline-grid;
+    place-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 999px;
+    background: rgba(216, 255, 56, 0.1);
+    color: var(--lime);
+    font-weight: 900;
+    font-size: 0.82rem;
+  }
+
+  h3 {
+    margin: 1.5rem 0 0.55rem;
+    font-size: 1.25rem;
+    letter-spacing: -0.045em;
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.58;
+  }
+</style>

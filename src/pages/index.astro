@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import PhoneMock from '../components/PhoneMock.astro';
+---
+
+<BaseLayout>
+  <section class="container hero">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span>Football tracking for Apple Watch</div>
+      <h1 class="headline">Your match, measured clearly.</h1>
+      <p class="lead">
+        Rivalo turns every amateur football match into a clean performance summary: distance,
+        sprints, heart rate, goals, courts, rivalries, records, and short post-match insights.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="/support">Support URL</a>
+        <a class="button secondary" href="/privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <PhoneMock />
+  </section>
+
+  <section class="container section product">
+    <div>
+      <p class="kicker">Simple by design</p>
+      <h2>Start on the Watch. Review on iPhone. Improve every week.</h2>
+    </div>
+    <div class="feature-grid">
+      <FeatureCard number="01" title="Live capture" text="Record match duration, distance, heart rate, intensity, sprints, and route from Apple Watch." />
+      <FeatureCard number="02" title="Football context" text="Add opponent, score, competition, position, surface, court, goals, assists, and notes." />
+      <FeatureCard number="03" title="Useful progress" text="See personal records, goals, streaks, rivalries, court stats, and explainable post-match insights." />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2rem, 6vw, 4.5rem);
+    align-items: center;
+    padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 6vw, 4rem);
+  }
+
+  .headline { margin: 1.2rem 0 1.25rem; }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.8rem;
+  }
+
+  .product {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+  }
+
+  .kicker {
+    margin: 0 0 0.8rem;
+    color: var(--lime);
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: .78rem;
+    font-weight: 900;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 4.1rem);
+    line-height: .95;
+    letter-spacing: -0.07em;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+
+  @media (max-width: 940px) {
+    .hero,
+    .product { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    .feature-grid { grid-template-columns: 1fr; }
+  }
+</style>
