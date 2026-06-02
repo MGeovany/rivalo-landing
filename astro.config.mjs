@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://rivalo-landing.vercel.app',
+  site: 'https://rivalo.thefndrs.com',
   output: 'static'
 });
