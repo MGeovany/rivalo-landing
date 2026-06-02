@@ -1,46 +1,63 @@
 ---
 interface Props {
-  number: string;
+  icon: string;
   title: string;
   text: string;
+  accent?: 'orange' | 'gold' | 'blue' | 'green';
 }
 
-const { number, title, text } = Astro.props;
+const { icon, title, text, accent = 'orange' } = Astro.props;
+
+const accentMap = {
+  orange: { bg: 'rgba(255, 90, 0, 0.15)', color: 'var(--accent)' },
+  gold: { bg: 'rgba(255, 217, 89, 0.15)', color: 'var(--stat-gold)' },
+  blue: { bg: 'rgba(115, 217, 255, 0.15)', color: 'var(--stat-blue)' },
+  green: { bg: 'rgba(0, 217, 115, 0.15)', color: 'var(--positive)' },
+};
+
+const style = accentMap[accent];
 ---
 
 <article class="feature panel">
-  <span>{number}</span>
+  <div class="icon" style={`background: ${style.bg}; color: ${style.color}`}>
+    {icon}
+  </div>
   <h3>{title}</h3>
   <p>{text}</p>
 </article>
 
 <style>
   .feature {
-    padding: 1.2rem;
-    min-height: 176px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
   }
 
-  span {
-    display: inline-grid;
+  .feature:hover {
+    border-color: rgba(255, 90, 0, 0.25);
+  }
+
+  .icon {
+    display: grid;
     place-items: center;
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 999px;
-    background: rgba(216, 255, 56, 0.1);
-    color: var(--lime);
-    font-weight: 900;
-    font-size: 0.82rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    line-height: 1;
   }
 
   h3 {
-    margin: 1.5rem 0 0.55rem;
-    font-size: 1.25rem;
-    letter-spacing: -0.045em;
+    margin: 1.25rem 0 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
   }
 
   p {
     margin: 0;
-    color: var(--muted);
-    line-height: 1.58;
+    color: var(--muted-soft);
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.6;
   }
 </style>
