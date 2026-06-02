@@ -1,0 +1,5 @@
+.vercel
+.sesskey
+__pycache__/
+.venv/
+*.pyc
