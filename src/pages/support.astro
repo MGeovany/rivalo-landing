@@ -3,17 +3,90 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import LegalPage from '../components/LegalPage.astro';
 ---
 
-<BaseLayout title="Rivalo Support">
+<BaseLayout
+  title="Rivalo Support"
+  description="Get help with Rivalo on iPhone and Apple Watch — setup, sync, Health permissions, account issues, and contact."
+>
   <LegalPage title="Support">
-    <p>Need help with Rivalo? This is the official support page for the app.</p>
-    <h2>Common help topics</h2>
+    <p>
+      Rivalo helps amateur football players track matches on Apple Watch and review performance on
+      iPhone. This page covers the most common setup and troubleshooting steps. If you still need
+      help, contact us — we typically respond within 2 business days.
+    </p>
+
+    <h2>Getting started</h2>
+    <h3>Install and sign in</h3>
+    <ol>
+      <li>Download Rivalo on your iPhone from the App Store.</li>
+      <li>Create an account or sign in with your email and password.</li>
+      <li>Complete your player profile (name, position, and optional details).</li>
+      <li>Install the Watch app by opening Rivalo on iPhone while your Apple Watch is paired and nearby.</li>
+    </ol>
+
+    <h3>Before your first match</h3>
     <ul>
-      <li>Pair your Apple Watch and open Rivalo on both devices before starting a match.</li>
-      <li>Allow Health permissions to record heart rate, distance, energy, and workout activity.</li>
-      <li>If a match does not sync immediately, reopen the iPhone app while the Watch is nearby.</li>
-      <li>For account, data, or support requests, contact us by email.</li>
+      <li>Pair your Apple Watch with the same iPhone running Rivalo.</li>
+      <li>Allow Health permissions on Watch when prompted (heart rate, distance, energy, workouts).</li>
+      <li>Allow notifications on iPhone if you want post-match summaries and result reminders.</li>
+      <li>Keep Bluetooth enabled and both devices charged before kickoff.</li>
     </ul>
-    <h2>Contact</h2>
-    <p>Email: support@rivalo.app</p>
+
+    <h2>Recording a match</h2>
+    <ol>
+      <li>Open Rivalo on your Apple Watch.</li>
+      <li>Tap start before kickoff and choose your match type (quick, structured, or training).</li>
+      <li>Play your match — Rivalo records duration, distance, heart rate, sprints, and route.</li>
+      <li>End the workout on Watch when the match finishes.</li>
+      <li>Open Rivalo on iPhone to review the synced session and add context (opponent, score, notes).</li>
+    </ol>
+
+    <h2>Sync &amp; data issues</h2>
+    <h3>Match not appearing on iPhone</h3>
+    <ul>
+      <li>Keep Watch and iPhone unlocked and close together for a minute after ending the match.</li>
+      <li>Open the Rivalo iPhone app while the Watch is still on your wrist.</li>
+      <li>Check that you are signed in to the same account on both devices.</li>
+      <li>Force-quit and reopen Rivalo on iPhone, then pull to refresh the sessions list.</li>
+      <li>Restart both devices if sync still fails after several minutes.</li>
+    </ul>
+
+    <h3>Missing heart rate or distance</h3>
+    <ul>
+      <li>Confirm Health permissions: iPhone <strong>Settings → Health → Data Access → Rivalo</strong>.</li>
+      <li>Wear the Watch snugly during the match; loose fit reduces heart rate accuracy.</li>
+      <li>Outdoor matches with GPS give better distance and route data than indoor sessions.</li>
+    </ul>
+
+    <h2>Account &amp; profile</h2>
+    <ul>
+      <li><strong>Sign-in problems:</strong> Use the same email you registered with. Check spam for verification emails.</li>
+      <li><strong>Profile photo:</strong> Set from iPhone profile — requires photo library permission.</li>
+      <li><strong>Delete account:</strong> Email <a href="mailto:support@rivalo.app">support@rivalo.app</a> from your registered address with subject “Account deletion”.</li>
+    </ul>
+
+    <h2>App Store review</h2>
+    <p>
+      If you are reviewing Rivalo for Apple, use the demo credentials provided in App Store Connect
+      App Review Information. The account includes sample match history so all iPhone features can
+      be tested without recording a live workout.
+    </p>
+
+    <h2>What to include when you contact us</h2>
+    <ul>
+      <li>Your registered email address</li>
+      <li>iPhone model and iOS version</li>
+      <li>Apple Watch model and watchOS version (if relevant)</li>
+      <li>A short description of the issue and when it happened</li>
+      <li>Screenshots if possible</li>
+    </ul>
+
+    <div class="contact-box">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:support@rivalo.app">support@rivalo.app</a><br />
+        Privacy requests: see our <a href="/privacy">Privacy Policy</a><br />
+        Terms: see our <a href="/terms">Terms of Use</a>
+      </p>
+    </div>
   </LegalPage>
 </BaseLayout>

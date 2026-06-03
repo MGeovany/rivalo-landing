@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureCard from '../components/FeatureCard.astro';
-import PhoneMock from '../components/PhoneMock.astro';
 ---
 
 <BaseLayout>
@@ -17,24 +16,19 @@ import PhoneMock from '../components/PhoneMock.astro';
         <a class="button primary" href="/support">Get support</a>
         <a class="button secondary" href="/privacy">Privacy policy</a>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <span class="hero-stat-value">18.4</span>
-          <span class="hero-stat-label">km</span>
-        </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <span class="hero-stat-value">34</span>
-          <span class="hero-stat-label">sprints</span>
-        </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <span class="hero-stat-value">3</span>
-          <span class="hero-stat-label">matches</span>
-        </div>
-      </div>
     </div>
-    <PhoneMock />
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-visual-glow"></div>
+      <img
+        src="/images/hero-performance.png"
+        alt="Rivalo Performance dashboard showing distance, top speed, sprints, and match stats"
+        class="hero-screenshot"
+        width="390"
+        height="844"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
   </section>
 
   <!-- How it works -->
@@ -157,39 +151,29 @@ import PhoneMock from '../components/PhoneMock.astro';
     margin-top: 1.75rem;
   }
 
-  .hero-stats {
+  .hero-visual {
+    position: relative;
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--line);
   }
 
-  .hero-stat-value {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 1.75rem;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--text);
+  .hero-visual-glow {
+    position: absolute;
+    inset: 8% 0 -8%;
+    background: radial-gradient(ellipse at 50% 55%, rgba(255, 90, 0, 0.22), transparent 68%);
+    pointer-events: none;
   }
 
-  .hero-stat-label {
-    display: block;
-    margin-top: 4px;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .hero-stat-divider {
-    width: 1px;
-    height: 36px;
-    background: var(--line);
+  .hero-screenshot {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 320px);
+    height: auto;
+    border-radius: 36px;
+    box-shadow:
+      0 40px 80px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
   }
 
   /* ── How it works ── */
@@ -327,7 +311,8 @@ import PhoneMock from '../components/PhoneMock.astro';
   /* ── Responsive ── */
   @media (max-width: 960px) {
     .hero { grid-template-columns: 1fr; }
-    .hero-copy { order: 1; }
+    .hero-visual { order: -1; }
+    .hero-screenshot { width: min(72vw, 280px); }
     .steps {
       grid-template-columns: 1fr;
       gap: 1rem;
@@ -339,6 +324,5 @@ import PhoneMock from '../components/PhoneMock.astro';
 
   @media (max-width: 600px) {
     .feature-grid { grid-template-columns: 1fr; }
-    .hero-stats { gap: 1rem; }
   }
 </style>

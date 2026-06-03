@@ -3,23 +3,143 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import LegalPage from '../components/LegalPage.astro';
 ---
 
-<BaseLayout title="Rivalo Privacy Policy">
+<BaseLayout title="Rivalo Privacy Policy" description="How Rivalo collects, uses, and protects your data on iPhone and Apple Watch.">
   <LegalPage title="Privacy Policy" updated="June 2, 2026">
-    <p>Rivalo tracks football performance while keeping data focused on the app experience.</p>
+    <p>
+      Rivalo (“we”, “us”, “our”) builds tools for amateur football players to record matches and
+      understand performance over time. This Privacy Policy explains what data we collect, why we
+      collect it, how we use it, and the choices you have. By using Rivalo on iPhone or Apple
+      Watch, you agree to this policy.
+    </p>
+
+    <h2>Who we are</h2>
+    <p>
+      Rivalo is a football performance tracking app. Our support contact is
+      <a href="mailto:support@rivalo.app">support@rivalo.app</a>. This policy applies to the Rivalo
+      mobile apps and the services that power them.
+    </p>
+
     <h2>Data we collect</h2>
+    <h3>Account &amp; profile</h3>
     <ul>
-      <li>Account information used for sign-in and profile setup.</li>
-      <li>Workout metrics such as duration, distance, heart rate, sprints, calories, and route samples when you record a match.</li>
-      <li>Match context you choose to add, such as score, opponent, competition, position, surface, and court.</li>
-      <li>Local photos or venue notes you add inside the app.</li>
+      <li>Email address and authentication credentials (via Supabase Auth)</li>
+      <li>Display name, preferred position, and optional profile fields you provide</li>
+      <li>Profile photo if you choose to upload one</li>
     </ul>
-    <h2>How we use data</h2>
-    <p>We use your data to provide match summaries, personal records, goals, streaks, rivalries, court stats, and performance insights.</p>
-    <h2>Sharing</h2>
-    <p>We do not sell personal data. Data is only shared with service providers required to run the app, such as authentication, database, hosting, and Apple platform services.</p>
-    <h2>Health data</h2>
-    <p>Apple Health data is used only to record and display your football activity. It is not used for advertising or sold to third parties.</p>
-    <h2>Contact</h2>
-    <p>For privacy requests, contact support@rivalo.app.</p>
+
+    <h3>Match &amp; workout data</h3>
+    <p>When you record a match on Apple Watch, we may process:</p>
+    <ul>
+      <li>Start and end time, duration, and distance</li>
+      <li>Heart rate samples, speed, sprints, intensity, and calories</li>
+      <li>GPS route samples used for heatmaps and pitch visualization</li>
+      <li>Workout metadata saved to Apple Health (when you grant permission)</li>
+    </ul>
+
+    <h3>Match context you add</h3>
+    <ul>
+      <li>Opponent, score, outcome (win/draw/loss), competition type</li>
+      <li>Goals, assists, notes, position, surface, and court/pitch information</li>
+      <li>Personal goals, streaks, rivalries, and records derived from your sessions</li>
+    </ul>
+
+    <h3>Technical data</h3>
+    <ul>
+      <li>Device type, app version, and basic diagnostic logs needed to operate and secure the service</li>
+      <li>API request metadata (timestamps, error codes) — not used for advertising</li>
+    </ul>
+
+    <h2>How we use your data</h2>
+    <p>We use your information to:</p>
+    <ul>
+      <li>Authenticate you and sync sessions between Apple Watch and iPhone</li>
+      <li>Display match summaries, charts, heatmaps, personal records, and progress trends</li>
+      <li>Calculate streaks, rivalries, court stats, goals, and post-match insights</li>
+      <li>Send local notifications you enable (match summaries, result reminders)</li>
+      <li>Maintain, secure, and improve the app and backend infrastructure</li>
+      <li>Respond to support requests and legal obligations</li>
+    </ul>
+    <p>We do <strong>not</strong> use your data for third-party advertising or sell personal information.</p>
+
+    <h2>Apple Health &amp; HealthKit</h2>
+    <p>
+      Rivalo on Apple Watch reads and writes workout-related HealthKit data only to record and
+      display your football activity. Health data is used for app functionality — not for
+      marketing, advertising, or sale to data brokers. You can revoke Health permissions at any
+      time in the Health app or iOS Settings; some features may stop working without them.
+    </p>
+
+    <h2>Location data</h2>
+    <p>
+      Location may be used on Apple Watch to improve distance and route accuracy during outdoor
+      matches and to suggest courts you have played at before. Location is tied to your sessions
+      and is not used for unrelated tracking or ads.
+    </p>
+
+    <h2>How we store &amp; protect data</h2>
+    <ul>
+      <li>Account and session data are stored in encrypted cloud infrastructure (Supabase PostgreSQL)</li>
+      <li>Authentication tokens are handled via industry-standard JWT flows</li>
+      <li>Local credentials on device use the iOS Keychain where applicable</li>
+      <li>We apply reasonable technical and organizational measures; no system is 100% secure</li>
+    </ul>
+
+    <h2>Sharing with third parties</h2>
+    <p>We share data only with service providers needed to run Rivalo, such as:</p>
+    <ul>
+      <li><strong>Supabase</strong> — authentication and database hosting</li>
+      <li><strong>Apple</strong> — App Store distribution, HealthKit, Watch connectivity, push notification infrastructure</li>
+      <li><strong>Cloud hosting</strong> — API and backend services that process your requests</li>
+    </ul>
+    <p>
+      These providers process data on our behalf under contractual obligations. We may also disclose
+      information if required by law or to protect rights, safety, and security.
+    </p>
+
+    <h2>Data retention</h2>
+    <p>
+      We retain your account and session data while your account is active. If you request account
+      deletion, we will delete or anonymize personal data within a reasonable period, except where
+      retention is required by law or for legitimate security backups.
+    </p>
+
+    <h2>Your rights &amp; choices</h2>
+    <ul>
+      <li><strong>Access &amp; correction:</strong> Update profile fields in the app or contact us</li>
+      <li><strong>Deletion:</strong> Email support@rivalo.app to request account deletion</li>
+      <li><strong>Health permissions:</strong> Manage in iOS Settings → Health → Rivalo</li>
+      <li><strong>Notifications:</strong> Manage in iOS Settings → Notifications → Rivalo</li>
+    </ul>
+    <p>
+      Depending on your region, you may have additional rights (access, portability, objection).
+      Contact us and we will respond within applicable legal timeframes.
+    </p>
+
+    <h2>Children</h2>
+    <p>
+      Rivalo is not directed at children under 13 (or the minimum age in your jurisdiction). We do
+      not knowingly collect personal data from children. Contact us if you believe a child has
+      provided data and we will delete it.
+    </p>
+
+    <h2>International transfers</h2>
+    <p>
+      Your data may be processed in countries other than where you live. We take steps to ensure
+      appropriate safeguards when data is transferred internationally.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. We will post the revised version on this
+      page with an updated “Last updated” date. Continued use after changes means you accept the
+      updated policy.
+    </p>
+
+    <div class="contact-box">
+      <h2>Contact</h2>
+      <p>
+        Privacy questions or requests: <a href="mailto:support@rivalo.app">support@rivalo.app</a>
+      </p>
+    </div>
   </LegalPage>
 </BaseLayout>
