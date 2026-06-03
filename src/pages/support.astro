@@ -1,11 +1,43 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LegalPage from '../components/LegalPage.astro';
+import { breadcrumbSchema, faqSchema, webPageSchema } from '../data/jsonLd';
+import { SITE } from '../data/site';
+
+const title = 'Rivalo Support — Help for iPhone & Apple Watch';
+const description =
+  `Setup, sync, Health permissions, and troubleshooting for Rivalo on iPhone and Apple Watch. Contact ${SITE.supportEmail} for help.`;
+
+const supportFaqs = [
+  {
+    question: 'How do I record a football match on Apple Watch with Rivalo?',
+    answer:
+      'Open Rivalo on your Apple Watch, tap start before kickoff, and choose your match type. Rivalo records duration, distance, heart rate, sprints, and route during the match. End the workout on Watch when finished, then open Rivalo on iPhone to review the synced session.'
+  },
+  {
+    question: 'Why is my Rivalo match not syncing to iPhone?',
+    answer:
+      'Keep Watch and iPhone unlocked and close together for a minute after ending the match. Open the Rivalo iPhone app while signed in to the same account, pull to refresh the sessions list, and restart both devices if sync still fails after several minutes.'
+  },
+  {
+    question: 'How do I delete my Rivalo account?',
+    answer:
+      `Email ${SITE.supportEmail} from your registered address with the subject "Account deletion". We will process your request according to our Privacy Policy.`
+  }
+];
 ---
 
 <BaseLayout
-  title="Rivalo Support"
-  description="Get help with Rivalo on iPhone and Apple Watch — setup, sync, Health permissions, account issues, and contact."
+  title={title}
+  description={description}
+  jsonLd={[
+    webPageSchema(title, description, '/support'),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Support', path: '/support' }
+    ]),
+    faqSchema(supportFaqs)
+  ]}
 >
   <LegalPage title="Support">
     <p>
@@ -61,7 +93,7 @@ import LegalPage from '../components/LegalPage.astro';
     <ul>
       <li><strong>Sign-in problems:</strong> Use the same email you registered with. Check spam for verification emails.</li>
       <li><strong>Profile photo:</strong> Set from iPhone profile — requires photo library permission.</li>
-      <li><strong>Delete account:</strong> Email <a href="mailto:support@rivalo.app">support@rivalo.app</a> from your registered address with subject “Account deletion”.</li>
+      <li><strong>Delete account:</strong> Email <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a> from your registered address with subject “Account deletion”.</li>
     </ul>
 
     <h2>App Store review</h2>
@@ -83,7 +115,7 @@ import LegalPage from '../components/LegalPage.astro';
     <div class="contact-box">
       <h2>Contact</h2>
       <p>
-        Email: <a href="mailto:support@rivalo.app">support@rivalo.app</a><br />
+        Email: <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a><br />
         Privacy requests: see our <a href="/privacy">Privacy Policy</a><br />
         Terms: see our <a href="/terms">Terms of Use</a>
       </p>

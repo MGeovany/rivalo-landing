@@ -5,9 +5,10 @@ interface Props {
   text: string;
   accent?: 'orange' | 'gold' | 'blue' | 'green' | 'bright';
   badge?: string;
+  delay?: number;
 }
 
-const { icon, title, text, accent = 'orange', badge } = Astro.props;
+const { icon, title, text, accent = 'orange', badge, delay = 0 } = Astro.props;
 
 const accentMap = {
   orange: {
@@ -42,7 +43,8 @@ const style = accentMap[accent];
 
 <article
   class="feature"
-  style={`--accent: ${style.color}; --accent-bg: ${style.bg}; --accent-border: ${style.border}`}
+  data-reveal
+  style={`--accent: ${style.color}; --accent-bg: ${style.bg}; --accent-border: ${style.border}; --reveal-delay: ${delay}ms`}
 >
   <div class="feature-top">
     <div class="icon">{icon}</div>
@@ -62,6 +64,19 @@ const style = accentMap[accent];
     border-radius: 18px;
     background: linear-gradient(180deg, var(--surface) 0%, #1a1a1c 100%);
     overflow: hidden;
+    cursor: default;
+    transition:
+      transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.28s ease;
+  }
+
+  .feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.38);
+  }
+
+  .feature:hover .icon {
+    transform: scale(1.08);
   }
 
   .feature::before {
@@ -100,6 +115,7 @@ const style = accentMap[accent];
     background: var(--accent-bg);
     font-size: 1.05rem;
     line-height: 1;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .badge {

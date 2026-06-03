@@ -1,28 +1,36 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureCard from '../components/FeatureCard.astro';
+import LandingMotion from '../components/LandingMotion.astro';
+import { SITE } from '../data/site';
+import { homePageSchema } from '../data/jsonLd';
 ---
 
-<BaseLayout>
+<BaseLayout
+  title={SITE.defaultTitle}
+  description={SITE.defaultDescription}
+  jsonLd={homePageSchema()}
+>
+  <LandingMotion />
   <!-- Hero -->
-  <section class="container hero">
+  <section class="container hero" aria-labelledby="hero-heading">
     <div class="hero-copy">
-      <h1 class="headline headline-gradient">Your match.<br />Measured clearly.</h1>
-      <p class="lead">
+      <h1 id="hero-heading" class="headline headline-gradient hero-headline">Your match.<br />Measured clearly.</h1>
+      <p class="lead hero-animate-in delay-1">
         Start on the Watch. Rivalo captures distance, sprints, heart rate, and intensity
         during every amateur football match — then builds a clean performance summary on iPhone.
       </p>
-      <div class="actions">
+      <div class="actions hero-animate-in delay-2">
         <a class="button primary" href="/support">Get support</a>
         <a class="button secondary" href="/privacy">Privacy policy</a>
       </div>
     </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hero-visual-glow"></div>
+    <div class="hero-visual hero-animate-in delay-3" aria-hidden="true">
+      <div class="hero-visual-glow hero-visual-glow-pulse"></div>
       <img
         src="/images/hero-performance.png"
         alt="Rivalo Performance dashboard showing distance, top speed, sprints, and match stats"
-        class="hero-screenshot"
+        class="hero-screenshot hero-screenshot-float"
         width="390"
         height="844"
         loading="eager"
@@ -32,28 +40,28 @@ import FeatureCard from '../components/FeatureCard.astro';
   </section>
 
   <!-- How it works -->
-  <section class="container section how">
-    <div class="section-title">
+  <section class="container section how" aria-labelledby="how-heading">
+    <div class="section-title" data-reveal>
       <div class="section-title-bar"></div>
       <div>
         <p class="section-kicker">How it works</p>
-        <h2>Watch → iPhone → progress</h2>
+        <h2 id="how-heading">Watch → iPhone → progress</h2>
       </div>
     </div>
     <div class="steps">
-      <div class="step">
+      <div class="step step-interactive" data-reveal style="--reveal-delay: 0ms">
         <div class="step-num">01</div>
         <h3>Start on Apple Watch</h3>
         <p>Tap start before kickoff. Live heart rate, distance, sprints, and route.</p>
       </div>
-      <div class="step-arrow" aria-hidden="true">→</div>
-      <div class="step">
+      <div class="step-arrow step-arrow-animated" aria-hidden="true">→</div>
+      <div class="step step-interactive" data-reveal style="--reveal-delay: 100ms">
         <div class="step-num">02</div>
         <h3>Sync to iPhone</h3>
         <p>When the match ends, your session syncs. Add score, opponent, and notes.</p>
       </div>
-      <div class="step-arrow" aria-hidden="true">→</div>
-      <div class="step">
+      <div class="step-arrow step-arrow-animated" aria-hidden="true">→</div>
+      <div class="step step-interactive" data-reveal style="--reveal-delay: 200ms">
         <div class="step-num">03</div>
         <h3>Review & improve</h3>
         <p>Heatmaps, personal records, streaks, and post-match insights every week.</p>
@@ -62,13 +70,13 @@ import FeatureCard from '../components/FeatureCard.astro';
   </section>
 
   <!-- Features -->
-  <section class="container section features">
-    <div class="features-header">
+  <section class="container section features" aria-labelledby="features-heading">
+    <div class="features-header" data-reveal>
       <div class="section-title">
         <div class="section-title-bar"></div>
         <div>
           <p class="section-kicker">Built for football</p>
-          <h2>Everything that matters<br />on the pitch</h2>
+          <h2 id="features-heading">Everything that matters<br />on the pitch</h2>
         </div>
       </div>
     </div>
@@ -79,6 +87,7 @@ import FeatureCard from '../components/FeatureCard.astro';
         badge="Live"
         title="Live capture"
         text="Duration, distance, heart rate, intensity, sprints, and route — recorded during the match."
+        delay={0}
       />
       <FeatureCard
         icon="⚽"
@@ -86,6 +95,7 @@ import FeatureCard from '../components/FeatureCard.astro';
         badge="Context"
         title="Match context"
         text="Opponent, score, competition, position, surface, court, goals, assists, and notes."
+        delay={80}
       />
       <FeatureCard
         icon="📊"
@@ -93,6 +103,7 @@ import FeatureCard from '../components/FeatureCard.astro';
         badge="Stats"
         title="Performance stats"
         text="Heatmaps, sprint bursts, pitch routes, top speed, and intensity per match."
+        delay={160}
       />
       <FeatureCard
         icon="🏆"
@@ -100,6 +111,7 @@ import FeatureCard from '../components/FeatureCard.astro';
         badge="Record"
         title="Progress & records"
         text="Personal records, weekly streaks, goals, rivalries, and court stats."
+        delay={240}
       />
       <FeatureCard
         icon="🃏"
@@ -107,6 +119,7 @@ import FeatureCard from '../components/FeatureCard.astro';
         badge="Share"
         title="Player card"
         text="Rating, tier, matches, distance, sprints, and profile photo — ready to share."
+        delay={320}
       />
       <FeatureCard
         icon="🔔"
@@ -114,14 +127,15 @@ import FeatureCard from '../components/FeatureCard.astro';
         badge="Push"
         title="Post-match flow"
         text="Summary notifications with quick actions to review stats or log your result."
+        delay={400}
       />
     </div>
   </section>
 
   <!-- CTA -->
   <section class="container section cta-section">
-    <div class="cta panel-hero">
-      <img src="/images/isotipo.png" alt="" class="cta-icon" width="48" height="48" />
+    <div class="cta panel-hero cta-interactive" data-reveal>
+      <img src="/images/isotipo.png" alt="" class="cta-icon cta-icon-pulse" width="48" height="48" />
       <h2>Ready to measure every match?</h2>
       <p>Rivalo is built for amateur footballers who want honest data — not guesswork.</p>
       <div class="cta-actions">
@@ -174,6 +188,7 @@ import FeatureCard from '../components/FeatureCard.astro';
     box-shadow:
       0 40px 80px rgba(0, 0, 0, 0.55),
       0 0 0 1px rgba(255, 255, 255, 0.06);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   /* ── How it works ── */

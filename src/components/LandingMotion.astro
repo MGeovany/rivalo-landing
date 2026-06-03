@@ -1,0 +1,62 @@
+<script>
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if (revealEls.length && !prefersReduced) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  // Sticky nav blur
+  const nav = document.querySelector('.nav-wrap');
+  const onScroll = () => {
+    if (!nav) return;
+    nav.classList.toggle('is-scrolled', window.scrollY > 24);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Hero phone tilt
+  const visual = document.querySelector('.hero-visual');
+  const phone = document.querySelector('.hero-screenshot') as HTMLElement | null;
+  if (visual && phone && !prefersReduced && window.matchMedia('(pointer: fine)').matches) {
+    visual.addEventListener('mouseenter', () => visual.classList.add('is-active'));
+    visual.addEventListener('mousemove', (e) => {
+      const ev = e as MouseEvent;
+      const rect = visual.getBoundingClientRect();
+      const x = (ev.clientX - rect.left) / rect.width - 0.5;
+      const y = (ev.clientY - rect.top) / rect.height - 0.5;
+      phone.style.transform =
+        `perspective(900px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-6px)`;
+    });
+    visual.addEventListener('mouseleave', () => {
+      visual.classList.remove('is-active');
+      phone.style.transform = '';
+    });
+  }
+
+  // Smooth anchor scroll for in-page links (future-proof)
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href');
+      if (!id || id === '#') return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
+    });
+  });
+</script>

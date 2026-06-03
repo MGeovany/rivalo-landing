@@ -1,0 +1,181 @@
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ── Scroll reveal ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--reveal-delay, 0ms));
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hero entrance ── */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes icon-pulse {
+  0%, 100% { filter: drop-shadow(0 0 16px rgba(255, 90, 0, 0.35)); }
+  50% { filter: drop-shadow(0 0 28px rgba(255, 90, 0, 0.65)); }
+}
+
+.hero-animate-in {
+  animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-animate-in.delay-1 { animation-delay: 0.1s; }
+.hero-animate-in.delay-2 { animation-delay: 0.2s; }
+.hero-animate-in.delay-3 { animation-delay: 0.32s; }
+.hero-animate-in.delay-4 { animation-delay: 0.44s; }
+
+.headline-gradient-animated {
+  background-size: 200% auto;
+  animation: shimmer 6s linear infinite;
+}
+
+.hero-visual.is-active .hero-screenshot-float {
+  animation: none;
+}
+
+.hero-screenshot-float {
+  animation: hero-float 5.5s ease-in-out infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hero-visual-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+.cta-icon-pulse {
+  animation: icon-pulse 3s ease-in-out infinite;
+}
+
+.hero-headline {
+  background-size: 200% auto;
+  animation:
+    hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both,
+    shimmer 6s linear 1s infinite;
+}
+
+/* ── Interactive hovers ── */
+.button {
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.2s ease,
+    opacity 0.15s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(255, 90, 0, 0.35);
+}
+
+.button.secondary:hover,
+.button.ghost:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 90, 0, 0.35);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.step-interactive {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.step-interactive:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 90, 0, 0.28);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.step-arrow-animated {
+  animation: arrow-nudge 1.8s ease-in-out infinite;
+}
+
+@keyframes arrow-nudge {
+  0%, 100% { transform: translateX(0); opacity: 0.75; }
+  50% { transform: translateX(6px); opacity: 1; }
+}
+
+.cta-interactive {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+
+.cta-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 48px rgba(255, 90, 0, 0.12);
+}
+
+/* ── Sticky nav ── */
+.nav-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    padding 0.3s ease;
+}
+
+.nav-wrap.is-scrolled {
+  background: rgba(4, 5, 6, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  margin-inline: calc(-1 * clamp(12px, 4vw, 16px));
+  padding-inline: clamp(12px, 4vw, 16px);
+}

@@ -1,9 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LegalPage from '../components/LegalPage.astro';
+import { breadcrumbSchema, webPageSchema } from '../data/jsonLd';
+import { SITE } from '../data/site';
+
+const title = 'Rivalo Privacy Policy';
+const description =
+  'How Rivalo collects, uses, stores, and protects your data on iPhone and Apple Watch. Health data, account info, and your privacy choices.';
 ---
 
-<BaseLayout title="Rivalo Privacy Policy" description="How Rivalo collects, uses, and protects your data on iPhone and Apple Watch.">
+<BaseLayout
+  title={title}
+  description={description}
+  ogType="article"
+  jsonLd={[
+    webPageSchema(title, description, '/privacy'),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Privacy Policy', path: '/privacy' }
+    ])
+  ]}
+>
   <LegalPage title="Privacy Policy" updated="June 2, 2026">
     <p>
       Rivalo (“we”, “us”, “our”) builds tools for amateur football players to record matches and
@@ -15,7 +32,7 @@ import LegalPage from '../components/LegalPage.astro';
     <h2>Who we are</h2>
     <p>
       Rivalo is a football performance tracking app. Our support contact is
-      <a href="mailto:support@rivalo.app">support@rivalo.app</a>. This policy applies to the Rivalo
+      <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a>. This policy applies to the Rivalo
       mobile apps and the services that power them.
     </p>
 
@@ -106,7 +123,7 @@ import LegalPage from '../components/LegalPage.astro';
     <h2>Your rights &amp; choices</h2>
     <ul>
       <li><strong>Access &amp; correction:</strong> Update profile fields in the app or contact us</li>
-      <li><strong>Deletion:</strong> Email support@rivalo.app to request account deletion</li>
+      <li><strong>Deletion:</strong> Email {SITE.supportEmail} to request account deletion</li>
       <li><strong>Health permissions:</strong> Manage in iOS Settings → Health → Rivalo</li>
       <li><strong>Notifications:</strong> Manage in iOS Settings → Notifications → Rivalo</li>
     </ul>
@@ -138,7 +155,7 @@ import LegalPage from '../components/LegalPage.astro';
     <div class="contact-box">
       <h2>Contact</h2>
       <p>
-        Privacy questions or requests: <a href="mailto:support@rivalo.app">support@rivalo.app</a>
+        Privacy questions or requests: <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a>
       </p>
     </div>
   </LegalPage>

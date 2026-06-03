@@ -43,8 +43,11 @@ const links = [
 
   nav a {
     color: var(--muted-soft);
-    transition: color 0.15s;
+    transition: color 0.15s ease, transform 0.15s ease;
   }
 
-  nav a:hover { color: var(--accent); }
+  nav a:hover {
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
 </style>

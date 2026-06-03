@@ -1,9 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LegalPage from '../components/LegalPage.astro';
+import { breadcrumbSchema, webPageSchema } from '../data/jsonLd';
+import { SITE } from '../data/site';
+
+const title = 'Rivalo Terms of Use';
+const description =
+  'Terms and conditions for using Rivalo on iPhone and Apple Watch. Account rules, acceptable use, health disclaimers, and legal information.';
 ---
 
-<BaseLayout title="Rivalo Terms of Use" description="Terms and conditions for using the Rivalo iPhone and Apple Watch apps.">
+<BaseLayout
+  title={title}
+  description={description}
+  ogType="article"
+  jsonLd={[
+    webPageSchema(title, description, '/terms'),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Terms of Use', path: '/terms' }
+    ])
+  ]}
+>
   <LegalPage title="Terms of Use" updated="June 2, 2026">
     <p>
       These Terms of Use (“Terms”) govern your access to and use of Rivalo on iPhone, Apple Watch,
@@ -30,7 +47,7 @@ import LegalPage from '../components/LegalPage.astro';
     <ul>
       <li>Keep your login credentials confidential.</li>
       <li>You are responsible for activity under your account.</li>
-      <li>Notify us promptly at <a href="mailto:support@rivalo.app">support@rivalo.app</a> if you suspect unauthorized access.</li>
+      <li>Notify us promptly at <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a> if you suspect unauthorized access.</li>
       <li>We may suspend or terminate accounts that violate these Terms or pose security risks.</li>
     </ul>
 
@@ -91,7 +108,7 @@ import LegalPage from '../components/LegalPage.astro';
     <h2>Termination</h2>
     <p>
       You may stop using Rivalo at any time and request account deletion via
-      <a href="mailto:support@rivalo.app">support@rivalo.app</a>. We may terminate or suspend
+      <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a>. We may terminate or suspend
       access if you breach these Terms or if required for legal or security reasons.
     </p>
 
@@ -127,7 +144,7 @@ import LegalPage from '../components/LegalPage.astro';
     <h2>Contact</h2>
     <div class="contact-box">
       <p>
-        Questions about these Terms: <a href="mailto:support@rivalo.app">support@rivalo.app</a><br />
+        Questions about these Terms: <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a><br />
         Support: <a href="/support">rivalo.app/support</a><br />
         Privacy: <a href="/privacy">rivalo.app/privacy</a>
       </p>
