@@ -8,7 +8,6 @@ import PhoneMock from '../components/PhoneMock.astro';
   <!-- Hero -->
   <section class="container hero">
     <div class="hero-copy">
-      <div class="eyebrow"><span class="dot"></span>Apple Watch + iPhone</div>
       <h1 class="headline headline-gradient">Your match.<br />Measured clearly.</h1>
       <p class="lead">
         Start on the Watch. Rivalo captures distance, sprints, heart rate, and intensity
@@ -20,18 +19,18 @@ import PhoneMock from '../components/PhoneMock.astro';
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="hero-stat-value">6.8</span>
-          <span class="hero-stat-label">km avg</span>
+          <span class="hero-stat-value">18.4</span>
+          <span class="hero-stat-label">km</span>
         </div>
         <div class="hero-stat-divider"></div>
         <div class="hero-stat">
-          <span class="hero-stat-value">22</span>
+          <span class="hero-stat-value">34</span>
           <span class="hero-stat-label">sprints</span>
         </div>
         <div class="hero-stat-divider"></div>
         <div class="hero-stat">
-          <span class="hero-stat-value">84</span>
-          <span class="hero-stat-label">rating</span>
+          <span class="hero-stat-value">3</span>
+          <span class="hero-stat-label">matches</span>
         </div>
       </div>
     </div>
@@ -51,19 +50,19 @@ import PhoneMock from '../components/PhoneMock.astro';
       <div class="step">
         <div class="step-num">01</div>
         <h3>Start on Apple Watch</h3>
-        <p>Tap start before kickoff. Rivalo records your workout live — heart rate, distance, sprints, and route.</p>
+        <p>Tap start before kickoff. Live heart rate, distance, sprints, and route.</p>
       </div>
       <div class="step-arrow" aria-hidden="true">→</div>
       <div class="step">
         <div class="step-num">02</div>
         <h3>Sync to iPhone</h3>
-        <p>When the match ends, your session syncs automatically. Add opponent, score, goals, and notes.</p>
+        <p>When the match ends, your session syncs. Add score, opponent, and notes.</p>
       </div>
       <div class="step-arrow" aria-hidden="true">→</div>
       <div class="step">
         <div class="step-num">03</div>
         <h3>Review & improve</h3>
-        <p>See heatmaps, personal records, weekly streaks, rivalries, and post-match insights every week.</p>
+        <p>Heatmaps, personal records, streaks, and post-match insights every week.</p>
       </div>
     </div>
   </section>
@@ -83,38 +82,44 @@ import PhoneMock from '../components/PhoneMock.astro';
       <FeatureCard
         icon="⌚"
         accent="orange"
+        badge="Live"
         title="Live capture"
-        text="Record match duration, distance, heart rate, intensity, sprints, and route from Apple Watch."
+        text="Duration, distance, heart rate, intensity, sprints, and route — recorded during the match."
       />
       <FeatureCard
         icon="⚽"
         accent="gold"
+        badge="Context"
         title="Match context"
-        text="Log opponent, score, competition, position, surface, court, goals, assists, and notes."
+        text="Opponent, score, competition, position, surface, court, goals, assists, and notes."
       />
       <FeatureCard
         icon="📊"
         accent="blue"
+        badge="Stats"
         title="Performance stats"
-        text="Heatmaps, sprint bursts, pitch routes, top speed, and intensity breakdown per match."
+        text="Heatmaps, sprint bursts, pitch routes, top speed, and intensity per match."
       />
       <FeatureCard
         icon="🏆"
         accent="green"
+        badge="Record"
         title="Progress & records"
-        text="Personal records, weekly streaks, goals, rivalries, court stats, and explainable insights."
+        text="Personal records, weekly streaks, goals, rivalries, and court stats."
       />
       <FeatureCard
         icon="🃏"
-        accent="orange"
+        accent="bright"
+        badge="Share"
         title="Player card"
-        text="Shareable card with your rating, tier, matches, distance, sprints, and profile photo."
+        text="Rating, tier, matches, distance, sprints, and profile photo — ready to share."
       />
       <FeatureCard
         icon="🔔"
-        accent="gold"
+        accent="orange"
+        badge="Push"
         title="Post-match flow"
-        text="Match summary notifications with quick actions to review stats or log your result."
+        text="Summary notifications with quick actions to review stats or log your result."
       />
     </div>
   </section>
@@ -142,8 +147,6 @@ import PhoneMock from '../components/PhoneMock.astro';
     align-items: center;
     padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(2rem, 5vw, 3.5rem);
   }
-
-  .hero-copy .eyebrow { margin-bottom: 1.25rem; }
 
   .headline { margin: 0 0 1.25rem; }
 
@@ -190,60 +193,96 @@ import PhoneMock from '../components/PhoneMock.astro';
   }
 
   /* ── How it works ── */
-  .how .section-title { margin-bottom: 2.5rem; }
+  .how .section-title { margin-bottom: 2.75rem; }
+
+  .how .section-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+  }
+
+  .how h2 {
+    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    line-height: 1.1;
+  }
 
   .steps {
     display: grid;
     grid-template-columns: 1fr auto 1fr auto 1fr;
-    gap: 1rem;
-    align-items: start;
+    gap: 1.25rem;
+    align-items: stretch;
   }
 
   .step {
-    padding: 1.5rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-card);
-    background: var(--surface);
+    padding: 1.75rem 1.5rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card-lg);
+    background: linear-gradient(160deg, rgba(36, 37, 38, 0.95), rgba(28, 28, 30, 0.98));
   }
 
   .step-num {
-    display: inline-block;
-    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    margin-bottom: 1.15rem;
+    padding: 0 0.5rem;
+    border-radius: 8px;
+    background: rgba(255, 90, 0, 0.14);
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--accent);
+    letter-spacing: 0.06em;
+    color: var(--accent-bright);
   }
 
   .step h3 {
-    margin: 0 0 0.6rem;
-    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
     font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
   }
 
   .step p {
     margin: 0;
-    color: var(--muted-soft);
-    font-size: 0.92rem;
-    line-height: 1.6;
+    color: rgba(245, 245, 245, 0.82);
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.65;
   }
 
   .step-arrow {
     align-self: center;
-    padding-top: 2rem;
-    color: var(--accent);
-    font-size: 1.25rem;
-    opacity: 0.5;
+    color: var(--accent-bright);
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 0.75;
   }
 
   /* ── Features ── */
-  .features-header { margin-bottom: 2.5rem; }
+  .features-header { margin-bottom: 2.75rem; }
+
+  .features .section-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+  }
+
+  .features h2 {
+    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    line-height: 1.1;
+  }
 
   .feature-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+  }
+
+  @media (min-width: 961px) {
+    .feature-grid {
+      gap: 1.15rem;
+    }
   }
 
   /* ── CTA ── */
@@ -291,7 +330,9 @@ import PhoneMock from '../components/PhoneMock.astro';
     .hero-copy { order: 1; }
     .steps {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
+    .step { padding: 1.5rem 1.35rem; }
     .step-arrow { display: none; }
     .feature-grid { grid-template-columns: 1fr 1fr; }
   }

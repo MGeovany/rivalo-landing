@@ -3,24 +3,50 @@ interface Props {
   icon: string;
   title: string;
   text: string;
-  accent?: 'orange' | 'gold' | 'blue' | 'green';
+  accent?: 'orange' | 'gold' | 'blue' | 'green' | 'bright';
+  badge?: string;
 }
 
-const { icon, title, text, accent = 'orange' } = Astro.props;
+const { icon, title, text, accent = 'orange', badge } = Astro.props;
 
 const accentMap = {
-  orange: { bg: 'rgba(255, 90, 0, 0.15)', color: 'var(--accent)' },
-  gold: { bg: 'rgba(255, 217, 89, 0.15)', color: 'var(--stat-gold)' },
-  blue: { bg: 'rgba(115, 217, 255, 0.15)', color: 'var(--stat-blue)' },
-  green: { bg: 'rgba(0, 217, 115, 0.15)', color: 'var(--positive)' },
+  orange: {
+    color: '#ff5a00',
+    bg: 'rgba(255, 90, 0, 0.18)',
+    border: 'rgba(255, 90, 0, 0.45)',
+  },
+  gold: {
+    color: '#ffd959',
+    bg: 'rgba(255, 217, 89, 0.18)',
+    border: 'rgba(255, 217, 89, 0.45)',
+  },
+  blue: {
+    color: '#73d9ff',
+    bg: 'rgba(115, 217, 255, 0.18)',
+    border: 'rgba(115, 217, 255, 0.45)',
+  },
+  green: {
+    color: '#00d973',
+    bg: 'rgba(0, 217, 115, 0.18)',
+    border: 'rgba(0, 217, 115, 0.45)',
+  },
+  bright: {
+    color: '#ff9d00',
+    bg: 'rgba(255, 157, 0, 0.18)',
+    border: 'rgba(255, 157, 0, 0.45)',
+  },
 };
 
 const style = accentMap[accent];
 ---
 
-<article class="feature panel">
-  <div class="icon" style={`background: ${style.bg}; color: ${style.color}`}>
-    {icon}
+<article
+  class="feature"
+  style={`--accent: ${style.color}; --accent-bg: ${style.bg}; --accent-border: ${style.border}`}
+>
+  <div class="feature-top">
+    <div class="icon">{icon}</div>
+    {badge && <span class="badge">{badge}</span>}
   </div>
   <h3>{title}</h3>
   <p>{text}</p>
@@ -28,36 +54,81 @@ const style = accentMap[accent];
 
 <style>
   .feature {
-    padding: 1.5rem;
-    transition: border-color 0.2s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 168px;
+    padding: 1.15rem;
+    border-radius: 18px;
+    background: linear-gradient(180deg, var(--surface) 0%, #1a1a1c 100%);
+    overflow: hidden;
   }
 
-  .feature:hover {
-    border-color: rgba(255, 90, 0, 0.25);
+  .feature::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      145deg,
+      var(--accent-border),
+      rgba(255, 255, 255, 0.06) 45%,
+      transparent 80%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .feature-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: auto;
   }
 
   .icon {
     display: grid;
     place-items: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 12px;
-    font-size: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent-bg);
+    font-size: 1.05rem;
     line-height: 1;
   }
 
+  .badge {
+    padding: 0.2rem 0.45rem;
+    border-radius: 999px;
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
   h3 {
-    margin: 1.25rem 0 0.5rem;
-    font-size: 1.15rem;
+    margin: 1rem 0 0.45rem;
+    font-size: 1.2rem;
     font-weight: 600;
+    line-height: 1.15;
     letter-spacing: 0.01em;
+    color: var(--text);
   }
 
   p {
     margin: 0;
-    color: var(--muted-soft);
+    color: rgba(245, 245, 245, 0.78);
     font-size: 0.95rem;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.55;
   }
 </style>
