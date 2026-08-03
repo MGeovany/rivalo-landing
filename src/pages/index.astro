@@ -18,24 +18,12 @@ import { homePageSchema } from '../data/jsonLd';
       <h1 id="hero-heading" class="headline headline-gradient hero-headline">Your match.<br />Measured clearly.</h1>
       <p class="lead hero-animate-in delay-1">
         Start on the Watch. Rivalo captures distance, sprints, heart rate, and intensity
-        during every amateur football match — then builds a clean performance summary on iPhone.
+        during every amateur football match, then builds a clean performance summary on iPhone.
       </p>
       <div class="actions hero-animate-in delay-2">
         <a class="button primary" href="/support">Get support</a>
         <a class="button secondary" href="/privacy">Privacy policy</a>
       </div>
-    </div>
-    <div class="hero-visual hero-animate-in delay-3" aria-hidden="true">
-      <div class="hero-visual-glow hero-visual-glow-pulse"></div>
-      <img
-        src="/images/hero-performance.png"
-        alt="Rivalo Performance dashboard showing distance, top speed, sprints, and match stats"
-        class="hero-screenshot hero-screenshot-float"
-        width="390"
-        height="844"
-        loading="eager"
-        decoding="async"
-      />
     </div>
   </section>
 
@@ -86,7 +74,7 @@ import { homePageSchema } from '../data/jsonLd';
         accent="orange"
         badge="Live"
         title="Live capture"
-        text="Duration, distance, heart rate, intensity, sprints, and route — recorded during the match."
+        text="Duration, distance, heart rate, intensity, sprints, and route, recorded during the match."
         delay={0}
       />
       <FeatureCard
@@ -118,7 +106,7 @@ import { homePageSchema } from '../data/jsonLd';
         accent="bright"
         badge="Share"
         title="Player card"
-        text="Rating, tier, matches, distance, sprints, and profile photo — ready to share."
+        text="Rating, tier, matches, distance, sprints, and profile photo, ready to share."
         delay={320}
       />
       <FeatureCard
@@ -137,7 +125,7 @@ import { homePageSchema } from '../data/jsonLd';
     <div class="cta panel-hero cta-interactive" data-reveal>
       <img src="/images/isotipo.png" alt="" class="cta-icon cta-icon-pulse" width="48" height="48" />
       <h2>Ready to measure every match?</h2>
-      <p>Rivalo is built for amateur footballers who want honest data — not guesswork.</p>
+      <p>Rivalo is built for amateur footballers who want honest data, not guesswork.</p>
       <div class="cta-actions">
         <a class="button primary" href="/support">Contact support</a>
         <a class="button ghost" href="/privacy">Privacy policy</a>
@@ -149,46 +137,24 @@ import { homePageSchema } from '../data/jsonLd';
 <style>
   /* ── Hero ── */
   .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: center;
-    padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(2rem, 5vw, 3.5rem);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(4rem, 10vw, 7.5rem) 0 clamp(2.5rem, 6vw, 4rem);
   }
 
+  .hero-copy { max-width: 720px; }
+
   .headline { margin: 0 0 1.25rem; }
+
+  .hero .lead { margin-inline: auto; }
 
   .actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0.75rem;
     margin-top: 1.75rem;
-  }
-
-  .hero-visual {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-visual-glow {
-    position: absolute;
-    inset: 8% 0 -8%;
-    background: radial-gradient(ellipse at 50% 55%, rgba(255, 90, 0, 0.22), transparent 68%);
-    pointer-events: none;
-  }
-
-  .hero-screenshot {
-    position: relative;
-    z-index: 1;
-    width: min(100%, 320px);
-    height: auto;
-    border-radius: 36px;
-    box-shadow:
-      0 40px 80px rgba(0, 0, 0, 0.55),
-      0 0 0 1px rgba(255, 255, 255, 0.06);
-    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   /* ── How it works ── */
@@ -325,9 +291,6 @@ import { homePageSchema } from '../data/jsonLd';
 
   /* ── Responsive ── */
   @media (max-width: 960px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-visual { order: -1; }
-    .hero-screenshot { width: min(72vw, 280px); }
     .steps {
       grid-template-columns: 1fr;
       gap: 1rem;

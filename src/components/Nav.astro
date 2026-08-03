@@ -6,13 +6,15 @@ const links = [
 ];
 ---
 
-<header class="container nav-wrap">
-  <a class="brand" href="/" aria-label="Rivalo home">
-    <img src="/images/wordmark.png" alt="Rivalo" class="wordmark" width="100" height="28" />
-  </a>
-  <nav aria-label="Main navigation">
-    {links.map((link) => <a href={link.href}>{link.label}</a>)}
-  </nav>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="/" aria-label="Rivalo home">
+      <img src="/images/wordmark.png" alt="Rivalo" class="wordmark" width="100" height="28" />
+    </a>
+    <nav aria-label="Main navigation">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+  </div>
 </header>
 
 <style>
@@ -51,3 +53,12 @@ const links = [
     transform: translateY(-1px);
   }
 </style>
+
+<script>
+  const header = document.querySelector('.site-header');
+  if (header) {
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

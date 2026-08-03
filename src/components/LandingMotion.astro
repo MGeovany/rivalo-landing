@@ -20,34 +20,6 @@
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // Sticky nav blur
-  const nav = document.querySelector('.nav-wrap');
-  const onScroll = () => {
-    if (!nav) return;
-    nav.classList.toggle('is-scrolled', window.scrollY > 24);
-  };
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  // Hero phone tilt
-  const visual = document.querySelector('.hero-visual');
-  const phone = document.querySelector('.hero-screenshot') as HTMLElement | null;
-  if (visual && phone && !prefersReduced && window.matchMedia('(pointer: fine)').matches) {
-    visual.addEventListener('mouseenter', () => visual.classList.add('is-active'));
-    visual.addEventListener('mousemove', (e) => {
-      const ev = e as MouseEvent;
-      const rect = visual.getBoundingClientRect();
-      const x = (ev.clientX - rect.left) / rect.width - 0.5;
-      const y = (ev.clientY - rect.top) / rect.height - 0.5;
-      phone.style.transform =
-        `perspective(900px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-6px)`;
-    });
-    visual.addEventListener('mouseleave', () => {
-      visual.classList.remove('is-active');
-      phone.style.transform = '';
-    });
-  }
-
   // Smooth anchor scroll for in-page links (future-proof)
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
